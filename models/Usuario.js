@@ -23,3 +23,25 @@ const Usuario = sequelize.define('usuario', {
 });
 
 module.exports = Usuario;
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Usuario:
+ *       type: object
+ *       required:
+ *         - nombre
+ *         - email
+ *         - pass
+ *       properties:
+ *         nombre:
+ *           type: string
+ *           example: Juan Pérez
+ *         email:
+ *           type: string
+ *           example: juan.perez@correo.com
+ *         pass:
+ *           type: string
+ *           example: 123456
+ */
+
