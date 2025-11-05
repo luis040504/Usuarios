@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const validarJWT = require('../middlewares/validarJWT');
 const {
   crearUsuario,
   obtenerUsuarios,
@@ -31,7 +32,7 @@ const router = Router();
  *               items:
  *                 $ref: '#/components/schemas/Usuario'
  */
-router.get('/', obtenerUsuarios);
+router.get('/', validarJWT, obtenerUsuarios);
 
 /**
  * @swagger
@@ -51,7 +52,7 @@ router.get('/', obtenerUsuarios);
  *       400:
  *         description: Error en los datos enviados
  */
-router.post('/', crearUsuario);
+router.post('/', validarJWT, crearUsuario);
 
 /**
  * @swagger
@@ -78,7 +79,7 @@ router.post('/', crearUsuario);
  *       400:
  *         description: Error en los datos enviados
  */
-router.put('/:id', actualizarUsuario);
+router.put('/:id', validarJWT,actualizarUsuario);
 
 /**
  * @swagger
@@ -99,6 +100,6 @@ router.put('/:id', actualizarUsuario);
  *       400:
  *         description: Error al eliminar el usuario
  */
-router.delete('/:id', eliminarUsuario);
+router.delete('/:id', validarJWT, eliminarUsuario);
 
 module.exports = router;
